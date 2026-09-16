@@ -1,0 +1,107 @@
+<!doctype html><html lang="es" data-bs-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Alloxentric | Michael Zamorano</title><meta name="description" content="Portafolio de Michael Zamorano, Ingeniero en Informática. Desarrollo backend, APIs y bases de datos."><script>(()=>{try{const t=localStorage.getItem('portfolio-theme');document.documentElement.setAttribute('data-bs-theme',t==='dark'||t==='light'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}})();</script>
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  >
+<link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/modern.css"></head>
+
+<body><a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+<header class="sticky-top border-bottom bg-body site-header">
+<nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+<div class="container"><a class="navbar-brand fw-bold" href="../index.html">Michael Zamorano<span class="brand-dot">.</span></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir navegación"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="mainNavbar">
+<ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+<li class="nav-item"><a class="nav-link" href="../index.html#projects">Proyectos</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../index.html#experience">Experiencia</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../index.html#about">Sobre mí</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../index.html#contact">Contacto</a></li>
+
+<li class="nav-item"><button id="themeToggle" class="btn btn-outline-secondary btn-sm" aria-pressed="false" aria-label="Usar tema oscuro" title="Usar tema oscuro" type="button"><span class="theme-icon theme-icon--moon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg></span><span class="theme-icon theme-icon--sun" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg></span><span class="visually-hidden theme-label">Usar tema oscuro</span></button></li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+
+<main id="main-content">
+<section class="project-hero py-5">
+<div class="container reading-width"><a href="../index.html#projects">← Todos los proyectos</a>
+<p class="eyebrow mt-4">Proyecto académico en equipo</p>
+
+<h1 class="display-5 fw-bold">Alloxentric</h1>
+
+<p class="lead">Sistema de agendamiento médico. Mi responsabilidad principal fue modelar e implementar la base de datos y desarrollar el backend.</p>
+
+<p class="text-body-secondary">Python · FastAPI · MongoDB · Vue · Keycloak</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Contexto</h2>
+
+<p>Proyecto académico en equipo para gestionar el agendamiento médico, con una interfaz web y componentes de chatbot y WhatsApp.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Mi participación</h2>
+
+<p>Modelé e implementé la base de datos en MongoDB y desarrollé el backend con Python y FastAPI. Realicé ajustes puntuales en el frontend y apoyé aspectos específicos de la lógica del chatbot.</p>
+
+<p>Otros integrantes lideraron el frontend, la integración del chatbot y la conexión con WhatsApp.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Desafío y solución</h2>
+
+<p>Lo más complejo fue definir entidades coherentes con el funcionamiento del sistema e integrar el backend con una plantilla que utilizaba Keycloak. El equipo logró la integración: el frontend envía el token y el backend verifica su firma y los permisos antes de acceder a los recursos.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Aprendizajes</h2>
+
+<p>Definir el modelo de datos a partir del flujo de citas y comprender cómo se conectan autenticación, permisos y acceso a datos. La colaboración con el equipo de frontend fue necesaria para resolver la integración.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Estado</h2>
+
+<p>Proyecto académico. El código disponible contiene módulos para médicos, citas y configuración. Su funcionamiento actual requiere volver a preparar el entorno y verificar los servicios.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Código del proyecto</h2>
+<a class="btn btn-primary" href="https://github.com/michael8922/Alloxentric">Ver repositorio</a></div>
+</section>
+</main>
+
+<footer class="border-top py-4">
+<div class="container d-flex flex-wrap justify-content-between gap-2">
+<p class="small mb-0">© <span data-current-year></span> Michael Antonio Zamorano Silva</p>
+<a href="../index.html#contact">Conversemos</a></div>
+</footer>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script><script src="../js/main.js" defer></script></body>
+</html>
+
+

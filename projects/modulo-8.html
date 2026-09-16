@@ -1,0 +1,156 @@
+<!doctype html><html lang="es" data-bs-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>API de usuarios y pedidos | Michael Zamorano</title><meta name="description" content="Portafolio de Michael Zamorano, Ingeniero en Informática. Desarrollo backend, APIs y bases de datos."><script>(()=>{try{const t=localStorage.getItem('portfolio-theme');document.documentElement.setAttribute('data-bs-theme',t==='dark'||t==='light'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}})();</script>
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  >
+<link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/modern.css"></head>
+
+<body><a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+<header class="sticky-top border-bottom bg-body site-header">
+<nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+<div class="container"><a class="navbar-brand fw-bold" href="../index.html">Michael Zamorano<span class="brand-dot">.</span></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir navegación"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="mainNavbar">
+<ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+<li class="nav-item"><a class="nav-link" href="../index.html#projects">Proyectos</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../index.html#experience">Experiencia</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../index.html#about">Sobre mí</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../index.html#contact">Contacto</a></li>
+
+<li class="nav-item"><button id="themeToggle" class="btn btn-outline-secondary btn-sm" aria-pressed="false" aria-label="Usar tema oscuro" title="Usar tema oscuro" type="button"><span class="theme-icon theme-icon--moon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg></span><span class="theme-icon theme-icon--sun" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg></span><span class="visually-hidden theme-label">Usar tema oscuro</span></button></li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+
+<main id="main-content">
+<section class="project-hero py-5">
+<div class="container reading-width"><a href="../index.html#projects">← Todos los proyectos</a>
+<p class="eyebrow mt-4">Proyecto del curso · Módulos 6–8</p>
+
+<h1 class="display-5 fw-bold">API de usuarios y pedidos</h1>
+
+<p class="lead">Aplicación que evoluciona desde un servidor web hasta una API con autenticación, gestión de usuarios y pedidos y carga de imágenes.</p>
+
+<p class="text-body-secondary">Node.js · Express · PostgreSQL · Sequelize · JWT</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Contexto y objetivo</h2>
+
+<p>Proyecto integrador del bootcamp para construir una aplicación de gestión de usuarios y pedidos. En el módulo 6 se desarrolló el servidor y las vistas; en el 7 se incorporaron PostgreSQL, relaciones y transacciones; en el 8 se añadió una API con autenticación y carga de imágenes.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Desafío y solución</h2>
+
+<p>El desafío técnico fue incorporar autenticación a una aplicación existente y proteger las operaciones que modifican datos. La solución agrega credenciales mediante una migración, verifica tokens JWT en middlewares y conserva la separación entre rutas, controladores, servicios y acceso a datos.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Arquitectura y herramientas</h2>
+
+<pre class="architecture-diagram">Interfaz web / Postman
+          ↓
+Rutas → Middlewares JWT → Controladores
+                              ↓
+                           Servicios
+                              ↓
+                Repositorios / Sequelize
+                              ↓
+                         PostgreSQL</pre>
+<p>Contraseñas procesadas con scrypt, JWT con HS256 y carga de imágenes con Multer. El panel guarda el token en sessionStorage. Las relaciones de datos incluyen usuario–perfil, usuario–pedidos y usuarios–roles; la aplicación no implementa autorización por roles.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Alcance técnico</h2>
+
+<ul>
+<li>CRUD de dos entidades principales: usuarios y pedidos.</li>
+
+<li>Tres tipos de relaciones: 1:1, 1:N y N:M.</li>
+
+<li>Imágenes JPEG, PNG y WebP, con tamaño máximo configurable.</li>
+
+<li>Respuestas uniformes con status, message y data.</li>
+</ul>
+
+<p>Estas cifras describen el alcance implementado; no representan métricas de rendimiento ni de uso real.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Endpoints representativos</h2>
+
+<div class="table-responsive">
+<table class="table"><thead>
+<tr><th>Método</th><th>Ruta</th><th>Función</th></tr>
+</thead><tbody>
+<tr><td>POST</td><td><code>/registro</code></td><td>Crear una cuenta</td></tr>
+
+<tr><td>POST</td><td><code>/login</code></td><td>Obtener un JWT</td></tr>
+
+<tr><td>GET</td><td><code>/usuarios</code></td><td>Consultar usuarios</td></tr>
+
+<tr><td>POST / PUT / DELETE</td><td><code>/api/pedidos</code> · <code>/api/pedidos/:id</code></td><td>Gestionar pedidos con autenticación</td></tr>
+
+<tr><td>POST</td><td><code>/upload</code></td><td>Cargar una imagen</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Aprendizajes y elección del caso</h2>
+
+<p>El proyecto reúne modelado relacional, separación de responsabilidades, validaciones y autenticación. Permite explicar cómo evolucionó una aplicación a través de tres entregas y por qué la protección debe aplicarse en el servidor.</p>
+
+<p>Lo seleccioné como caso de estudio del curso porque integra sus etapas de backend y conecta con mi interés en desarrollar APIs e integrar sistemas.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Estado de validación</h2>
+
+<p>Se realizaron pruebas manuales de registro, login, CRUD, solicitudes con y sin token y carga de imágenes. Queda pendiente reunir las capturas y completar la verificación de expiración del token, tamaño excedido y recorrido completo de la interfaz. No se publican porcentajes de cobertura ni mejoras de rendimiento sin mediciones.</p>
+</div>
+</section>
+
+<section class="section-block py-5">
+<div class="container reading-width">
+<h2 class="h3 mb-3">Código del proyecto</h2>
+<a class="btn btn-primary" href="https://github.com/michael8922/proyecto_modulo_8">Ver repositorio</a></div>
+</section>
+</main>
+
+<footer class="border-top py-4">
+<div class="container d-flex flex-wrap justify-content-between gap-2">
+<p class="small mb-0">© <span data-current-year></span> Michael Antonio Zamorano Silva</p>
+<a href="../index.html#contact">Conversemos</a></div>
+</footer>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script><script src="../js/main.js" defer></script></body>
+</html>
+
+

@@ -1,0 +1,1703 @@
+/*
+  css/styles.css
+  ==============
+  Estilos propios del portafolio.
+
+  Bootstrap resuelve la mayor parte del layout y los componentes.
+  Este archivo agrega identidad visual, accesibilidad y piezas específicas.
+*/
+
+/* Variables reutilizables para mantener consistencia. */
+:root {
+  --portfolio-surface: rgba(127, 127, 127, 0.08);
+  --portfolio-border: rgba(127, 127, 127, 0.18);
+}
+
+/* Desplazamiento suave al usar links internos como #projects. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Garantiza que el body pueda cubrir al menos toda la ventana. */
+body {
+  min-height: 100vh;
+}
+
+/*
+  Compensa la navbar sticky:
+  al navegar a #projects, #about, etc., evita que el título quede escondido.
+*/
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+/* Mejora el reparto de texto en títulos cuando el navegador lo soporta. */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Utilidad propia: Bootstrap llega hasta ciertos tamaños de spacing. */
+.py-lg-6 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/*
+  Skip link de accesibilidad.
+  Está fuera de pantalla hasta recibir foco con teclado.
+*/
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2000;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--bs-primary);
+  color: white;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Fondo compartido por el hero principal y el hero del proyecto. */
+.hero-section,
+.project-hero {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(13, 110, 253, 0.14), transparent 32rem),
+    var(--bs-body-bg);
+}
+
+/* Separador visual entre grandes bloques de contenido. */
+.section-block {
+  border-top: 1px solid var(--portfolio-border);
+}
+
+/* Etiqueta pequeña usada antes de algunos títulos de sección. */
+.eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--bs-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* Los links profesionales deben ser visibles y fáciles de reconocer. */
+.professional-links a {
+  font-weight: 600;
+}
+
+/* Superficies que deben adaptarse al tema claro/oscuro de Bootstrap. */
+.project-card,
+.card,
+.metric-card,
+/* Panel de contacto destacado al final de la Home. */
+.contact-panel {
+  background: var(--bs-body-bg);
+}
+
+.metric-card,
+.contact-panel {
+  border: 1px solid var(--portfolio-border);
+}
+
+/*
+  Mock visual de HelpDesk.
+  Sirve como placeholder pedagógico y puede reemplazarse por screenshot real.
+*/
+.project-visual {
+  min-height: 22rem;
+  background:
+    linear-gradient(145deg, rgba(13, 110, 253, 0.18), rgba(111, 66, 193, 0.12)),
+    var(--portfolio-surface);
+}
+
+/* Simulación de una pequeña ventana de aplicación. */
+.mock-window {
+  max-width: 44rem;
+  overflow: hidden;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 1rem;
+  background: var(--bs-body-bg);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+}
+
+/* Barra superior decorativa del mock. */
+.mock-window-bar {
+  display: flex;
+  gap: 0.45rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--portfolio-border);
+  background: var(--portfolio-surface);
+}
+
+.mock-window-bar span {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--bs-secondary);
+  opacity: 0.55;
+}
+
+.mock-window-body {
+  padding: 1.25rem;
+}
+
+/* Cada fila simula un ticket dentro del mock. */
+.mock-ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--portfolio-border);
+}
+
+.mock-ticket:last-child {
+  border-bottom: 0;
+}
+
+.project-points {
+  padding-left: 1.25rem;
+}
+
+.project-points li + li {
+  margin-top: 0.4rem;
+}
+
+/*
+  Timeline:
+  cada <li> representa un hito de trayectoria.
+*/
+.timeline li {
+  position: relative;
+  padding: 0 0 1.4rem 1.5rem;
+  border-left: 2px solid var(--portfolio-border);
+}
+
+.timeline li::before {
+  position: absolute;
+  top: 0.25rem;
+  left: -0.42rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--bs-primary);
+  content: "";
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline strong,
+.timeline span {
+  display: block;
+}
+
+.timeline span {
+  margin-top: 0.2rem;
+  color: var(--bs-secondary-color);
+}
+
+/*
+  Diagrama de arquitectura:
+  overflow-x permite hacer scroll horizontal si el contenido es ancho.
+*/
+.architecture-diagram {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 1rem;
+  background: var(--portfolio-surface);
+}
+
+.contact-panel {
+  background:
+    linear-gradient(135deg, rgba(13, 110, 253, 0.1), transparent 60%),
+    var(--bs-body-bg);
+}
+
+/* Limita el ancho del CV para mejorar legibilidad. */
+.cv-page {
+  max-width: 900px;
+}
+
+/*
+  Responsive para pantallas pequeñas.
+  Bootstrap es mobile-first; aquí solo ajustamos componentes propios.
+*/
+@media (max-width: 575.98px) {
+  .project-visual {
+    min-height: auto;
+  }
+
+  .mock-ticket {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/*
+  Modo impresión del CV:
+  elimina navegación y controles para obtener un documento limpio.
+*/
+@media print {
+  .no-print,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+/* =========================================================
+   Identidad visual de Michael
+   Inspirada en terminales, arquitectura backend y sistemas.
+   ========================================================= */
+:root,
+[data-bs-theme="light"] {
+  --mz-ink: #17211f;
+  --mz-muted: #5d6b67;
+  --mz-paper: #f4f1e8;
+  --mz-panel: #fffdf7;
+  --mz-green: #087f5b;
+  --mz-green-deep: #065f46;
+  --mz-mint: #b8f2d8;
+  --mz-amber: #e39a24;
+  --mz-line: rgba(23, 33, 31, 0.16);
+  --portfolio-surface: rgba(8, 127, 91, 0.07);
+  --portfolio-border: var(--mz-line);
+  --bs-primary: var(--mz-green);
+  --bs-primary-rgb: 8, 127, 91;
+  --bs-link-color: var(--mz-green-deep);
+  --bs-link-hover-color: #043f30;
+  --bs-body-bg: var(--mz-paper);
+  --bs-body-color: var(--mz-ink);
+  --bs-secondary-color: var(--mz-muted);
+}
+
+/* =========================================================
+   Rediseño 2026 · interfaz tecnológica
+   Cambia composición, profundidad, ritmo y componentes.
+   ========================================================= */
+:root,
+[data-bs-theme="light"] {
+  --mz-ink: #0a1020;
+  --mz-muted: #566179;
+  --mz-paper: #f5f7fc;
+  --mz-panel: rgba(255, 255, 255, 0.78);
+  --mz-panel-solid: #ffffff;
+  --mz-green: #5263ff;
+  --mz-green-deep: #3b4cdb;
+  --mz-mint: #dff9ff;
+  --mz-amber: #15c7e6;
+  --mz-violet: #8b5cf6;
+  --mz-line: rgba(35, 48, 79, 0.13);
+  --mz-glow: rgba(82, 99, 255, 0.18);
+  --portfolio-surface: rgba(82, 99, 255, 0.06);
+  --portfolio-border: var(--mz-line);
+  --bs-primary: var(--mz-green);
+  --bs-primary-rgb: 82, 99, 255;
+  --bs-link-color: var(--mz-green-deep);
+  --bs-link-hover-color: #2635ad;
+  --bs-body-bg: var(--mz-paper);
+  --bs-body-color: var(--mz-ink);
+  --bs-secondary-color: var(--mz-muted);
+}
+
+[data-bs-theme="dark"] {
+  --mz-ink: #f2f6ff;
+  --mz-muted: #9ba8c2;
+  --mz-paper: #070b16;
+  --mz-panel: rgba(15, 23, 42, 0.76);
+  --mz-panel-solid: #10182a;
+  --mz-green: #7b88ff;
+  --mz-green-deep: #a6b0ff;
+  --mz-mint: #0d2b38;
+  --mz-amber: #2bd9f3;
+  --mz-violet: #a881ff;
+  --mz-line: rgba(163, 178, 214, 0.16);
+  --mz-glow: rgba(70, 98, 255, 0.27);
+  --portfolio-surface: rgba(123, 136, 255, 0.08);
+  --portfolio-border: var(--mz-line);
+  --bs-primary: var(--mz-green);
+  --bs-primary-rgb: 123, 136, 255;
+  --bs-link-color: #a6b0ff;
+  --bs-link-hover-color: #d4d9ff;
+  --bs-body-bg: var(--mz-paper);
+  --bs-body-color: var(--mz-ink);
+  --bs-secondary-color: var(--mz-muted);
+}
+
+body {
+  font-family: Inter, "Segoe UI Variable Text", "Segoe UI", sans-serif;
+  letter-spacing: -0.012em;
+  background:
+    radial-gradient(circle at 12% 7%, color-mix(in srgb, var(--mz-green) 12%, transparent), transparent 28rem),
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--mz-amber) 10%, transparent), transparent 30rem),
+    var(--mz-paper);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--mz-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mz-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black, transparent 65%);
+  opacity: 0.24;
+  content: "";
+}
+
+h1,
+h2,
+h3,
+.navbar-brand {
+  font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.reading-width {
+  max-width: 1040px;
+}
+
+.site-header {
+  top: 0;
+  padding: 0.85rem 0;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.site-header .navbar {
+  padding: 0;
+}
+
+.site-header .navbar > .container {
+  min-height: 62px;
+  padding: 0.55rem 0.75rem 0.55rem 1.3rem;
+  border: 1px solid var(--mz-line);
+  border-radius: 1.15rem;
+  background: color-mix(in srgb, var(--mz-panel-solid) 78%, transparent);
+  box-shadow: 0 14px 45px rgba(5, 10, 24, 0.08);
+  backdrop-filter: blur(20px) saturate(150%);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.navbar-brand::before {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--mz-amber);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--mz-amber) 14%, transparent), 0 0 20px var(--mz-amber);
+  content: "";
+}
+
+.brand-dot {
+  display: none;
+}
+
+.nav-link {
+  padding: 0.55rem 0.75rem !important;
+  border-radius: 0.65rem;
+  color: var(--mz-muted);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.nav-link::after {
+  display: none;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background: color-mix(in srgb, var(--mz-green) 10%, transparent);
+  color: var(--mz-ink);
+}
+
+#themeToggle {
+  min-width: 8.4rem;
+  padding: 0.55rem 0.8rem;
+  border-color: var(--mz-line);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--mz-green) 9%, transparent);
+  font-size: 0.78rem;
+}
+
+.hero-section {
+  min-height: calc(100vh - 90px);
+  display: grid;
+  align-items: center;
+  border: 0;
+  background: transparent;
+}
+
+.hero-section::after,
+.project-hero::after {
+  right: 5vw;
+  width: min(34vw, 30rem);
+  height: min(34vw, 30rem);
+  border: 1px solid color-mix(in srgb, var(--mz-green) 20%, transparent);
+  border-radius: 38% 62% 64% 36% / 44% 38% 62% 56%;
+  background:
+    radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--mz-amber) 32%, transparent), transparent 34%),
+    linear-gradient(145deg, color-mix(in srgb, var(--mz-green) 19%, transparent), color-mix(in srgb, var(--mz-violet) 13%, transparent));
+  box-shadow: none;
+  filter: blur(0.2px);
+  transform: rotate(-9deg);
+}
+
+.hero-section h1 {
+  max-width: 9ch;
+  margin-top: 0.8rem;
+  font-size: clamp(4.4rem, 8.5vw, 8.6rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  background: linear-gradient(115deg, var(--mz-ink) 8%, var(--mz-green) 60%, var(--mz-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-section .fs-2 {
+  margin-top: 2rem !important;
+  font-size: clamp(1.45rem, 3vw, 2.2rem) !important;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.hero-section .fw-semibold.text-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.52rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--mz-amber) 30%, var(--mz-line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mz-amber) 8%, transparent);
+  color: var(--mz-green-deep) !important;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+.hero-section .fw-semibold.text-primary::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--mz-amber);
+  box-shadow: 0 0 12px var(--mz-amber);
+  content: "";
+}
+
+.hero-section .lead {
+  max-width: 65ch;
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--mz-green-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+.eyebrow::before {
+  width: 1.4rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--mz-amber), var(--mz-green));
+  content: "";
+}
+
+.hero-section aside.card {
+  overflow: hidden;
+  border: 1px solid var(--mz-line) !important;
+  border-radius: 1.5rem;
+  background: color-mix(in srgb, var(--mz-panel-solid) 70%, transparent);
+  box-shadow: 0 28px 80px rgba(5, 10, 24, 0.16) !important;
+  backdrop-filter: blur(18px);
+  transform: translateY(1.8rem);
+}
+
+.hero-section aside.card::before {
+  display: block;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid var(--mz-line);
+  background: color-mix(in srgb, var(--mz-green) 7%, transparent);
+  color: var(--mz-muted);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  content: "●  ●  ●     michael.profile";
+}
+
+.hero-section aside.card::after {
+  right: 1.2rem;
+  bottom: 0.6rem;
+  color: var(--mz-green);
+  font-size: 4.5rem;
+  opacity: 0.08;
+}
+
+.hero-section aside li {
+  position: relative;
+  padding-left: 1.3rem;
+  color: var(--mz-muted);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+.hero-section aside li::before {
+  position: absolute;
+  left: 0;
+  color: var(--mz-amber);
+  content: "↳";
+}
+
+.btn {
+  padding: 0.7rem 1.1rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.btn-primary {
+  border-color: transparent;
+  background: linear-gradient(120deg, var(--mz-green), var(--mz-violet));
+  color: #fff;
+  box-shadow: 0 10px 28px var(--mz-glow);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  border-color: transparent;
+  background: linear-gradient(120deg, var(--mz-green-deep), var(--mz-violet));
+  color: #fff;
+  box-shadow: 0 14px 34px var(--mz-glow);
+  transform: translateY(-2px);
+}
+
+[data-bs-theme="dark"] .btn-primary,
+[data-bs-theme="dark"] .btn-primary:hover,
+[data-bs-theme="dark"] .btn-primary:focus {
+  color: #fff;
+}
+
+.btn-outline-secondary,
+.btn-outline-primary {
+  border-color: var(--mz-line);
+  background: color-mix(in srgb, var(--mz-panel-solid) 42%, transparent);
+  color: var(--mz-ink);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-primary:hover {
+  border-color: color-mix(in srgb, var(--mz-green) 55%, var(--mz-line));
+  background: color-mix(in srgb, var(--mz-green) 10%, transparent);
+  color: var(--mz-ink);
+  transform: translateY(-2px);
+}
+
+.section-block {
+  position: relative;
+  padding-top: 6.5rem !important;
+  padding-bottom: 6.5rem !important;
+  border-top: 1px solid var(--mz-line);
+}
+
+.section-block h2.display-6 {
+  max-width: 15ch;
+  margin-bottom: 1.2rem;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.98;
+}
+
+#projects {
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--mz-green) 4%, transparent), transparent);
+}
+
+#projects > .container > .text-body-secondary {
+  max-width: 58ch;
+  margin-bottom: 2.5rem !important;
+}
+
+#projects .row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+#projects .row > div {
+  width: auto;
+  max-width: none;
+  padding: 0;
+}
+
+#projects .row > div:nth-child(1),
+#projects .row > div:nth-child(4) {
+  grid-column: span 7;
+}
+
+#projects .row > div:nth-child(2),
+#projects .row > div:nth-child(3) {
+  grid-column: span 5;
+}
+
+.project-card {
+  min-height: 25rem;
+  border: 1px solid var(--mz-line) !important;
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--mz-green) 14%, transparent), transparent 14rem),
+    color-mix(in srgb, var(--mz-panel-solid) 78%, transparent);
+  box-shadow: 0 18px 55px rgba(5, 10, 24, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+#projects .row > div:nth-child(1) .project-card,
+#projects .row > div:nth-child(4) .project-card {
+  background:
+    linear-gradient(140deg, color-mix(in srgb, var(--mz-green) 13%, transparent), transparent 55%),
+    color-mix(in srgb, var(--mz-panel-solid) 80%, transparent);
+}
+
+.project-card::before {
+  top: 0;
+  left: 2rem;
+  width: 5rem;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, var(--mz-amber), var(--mz-green), var(--mz-violet));
+}
+
+.project-card:hover {
+  border-color: color-mix(in srgb, var(--mz-green) 42%, var(--mz-line)) !important;
+  box-shadow: 0 26px 70px rgba(5, 10, 24, 0.14), 0 0 36px var(--mz-glow) !important;
+  transform: translateY(-7px);
+}
+
+.project-card h3 {
+  max-width: 15ch;
+  margin: 1.2rem 0;
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+}
+
+.project-card .card-body > p:not(.eyebrow) {
+  max-width: 58ch;
+  line-height: 1.7;
+}
+
+.project-number {
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 3.8rem;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--mz-green) 45%, transparent);
+  opacity: 1;
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.timeline li {
+  padding: 1.7rem 1.8rem;
+  border: 1px solid var(--mz-line);
+  border-radius: 1.15rem;
+  background: color-mix(in srgb, var(--mz-panel-solid) 68%, transparent);
+  box-shadow: 0 12px 36px rgba(5, 10, 24, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.timeline li::before {
+  top: 1.8rem;
+  right: 1.8rem;
+  left: auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 0;
+  background: var(--mz-amber);
+  box-shadow: 0 0 16px var(--mz-amber);
+}
+
+.timeline strong {
+  max-width: calc(100% - 2rem);
+  font-size: 1.1rem;
+}
+
+.timeline span {
+  margin: 0.55rem 0 1rem;
+  color: var(--mz-green-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.76rem;
+}
+
+.timeline p {
+  margin-bottom: 0;
+  color: var(--mz-muted);
+  line-height: 1.7;
+}
+
+#skills .row {
+  margin-top: 1rem;
+}
+
+#skills .row > div {
+  padding: 1.8rem;
+  border: 1px solid var(--mz-line);
+  border-radius: 1.15rem;
+  background: color-mix(in srgb, var(--mz-panel-solid) 68%, transparent);
+  box-shadow: 0 12px 35px rgba(5, 10, 24, 0.05);
+}
+
+#skills .row > div:not(:last-child) {
+  border-right: 1px solid var(--mz-line);
+}
+
+#skills .row > div::before {
+  width: fit-content;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--mz-amber) 30%, var(--mz-line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mz-amber) 8%, transparent);
+  color: var(--mz-green-deep);
+  font-size: 0.67rem;
+}
+
+#skills h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.25rem;
+}
+
+#skills p {
+  margin-bottom: 0;
+  color: var(--mz-muted);
+  line-height: 1.7;
+}
+
+#about .reading-width {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 1.1fr);
+  column-gap: 4rem;
+  align-items: start;
+}
+
+#about .eyebrow,
+#about h2 {
+  grid-column: 1 / -1;
+}
+
+#about .lead,
+#about .lead + p,
+#about .card + p {
+  grid-column: 1;
+}
+
+#about .card.border-primary {
+  grid-column: 2;
+  grid-row: 3 / span 3;
+  margin-top: 1rem !important;
+  border: 1px solid color-mix(in srgb, var(--mz-green) 35%, var(--mz-line)) !important;
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--mz-violet) 18%, transparent), transparent 15rem),
+    color-mix(in srgb, var(--mz-panel-solid) 76%, transparent);
+  box-shadow: 0 24px 65px rgba(5, 10, 24, 0.12) !important;
+  backdrop-filter: blur(15px);
+}
+
+#about .card.border-primary .h4::after {
+  background: linear-gradient(90deg, var(--mz-amber), var(--mz-violet));
+}
+
+.contact-panel {
+  min-height: 23rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 5rem) !important;
+  border: 1px solid color-mix(in srgb, var(--mz-green) 32%, var(--mz-line)) !important;
+  border-left: 1px solid color-mix(in srgb, var(--mz-green) 32%, var(--mz-line)) !important;
+  border-radius: 1.75rem !important;
+  background:
+    radial-gradient(circle at 85% 35%, color-mix(in srgb, var(--mz-amber) 18%, transparent), transparent 16rem),
+    linear-gradient(130deg, color-mix(in srgb, var(--mz-green) 15%, transparent), color-mix(in srgb, var(--mz-violet) 10%, transparent)),
+    color-mix(in srgb, var(--mz-panel-solid) 76%, transparent);
+  box-shadow: 0 30px 90px rgba(5, 10, 24, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+.contact-panel h2 {
+  max-width: 13ch;
+}
+
+.professional-links a {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--mz-line);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--mz-panel-solid) 38%, transparent);
+  color: var(--mz-ink);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.professional-links a:hover {
+  border-color: var(--mz-amber);
+  transform: translateY(-2px);
+}
+
+footer {
+  border-color: var(--mz-line) !important;
+  background: #060a14;
+  color: #b7c2d9;
+}
+
+footer a {
+  color: #7b88ff;
+}
+
+.project-hero {
+  min-height: 30rem;
+  border-bottom: 1px solid var(--mz-line);
+  background: transparent;
+}
+
+.project-hero .display-4 {
+  max-width: 17ch;
+  margin-top: 1.3rem;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  background: linear-gradient(115deg, var(--mz-ink), var(--mz-green), var(--mz-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.project-hero a[href*="index.html"] {
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--mz-panel-solid) 68%, transparent);
+}
+
+main > .section-block .reading-width > h2::before {
+  border-radius: 999px;
+  background: linear-gradient(var(--mz-amber), var(--mz-green), var(--mz-violet));
+}
+
+.architecture-diagram {
+  border-radius: 1rem;
+  background: #080d1b;
+  color: #b9c9ff;
+  box-shadow: inset 3px 0 0 var(--mz-amber), 0 18px 50px rgba(5, 10, 24, 0.18);
+}
+
+code {
+  border-color: color-mix(in srgb, var(--mz-green) 25%, var(--mz-line));
+  background: color-mix(in srgb, var(--mz-green) 9%, transparent);
+  color: var(--mz-green-deep);
+}
+
+.table {
+  border-radius: 1rem;
+}
+
+.table thead th {
+  border-bottom-color: var(--mz-green);
+  background: #0b1120;
+  color: #c7d2fe;
+}
+
+.cv-page {
+  max-width: 980px;
+}
+
+.cv-page > h1 {
+  max-width: 13ch;
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  background: linear-gradient(115deg, var(--mz-ink), var(--mz-green), var(--mz-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cv-page > section {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--mz-line);
+}
+
+.cv-page > section > h2 {
+  color: var(--mz-ink);
+  font-size: 1.7rem;
+}
+
+@media (max-width: 991.98px) {
+  .site-header {
+    padding: 0.6rem;
+  }
+
+  .site-header .navbar > .container {
+    border-radius: 1rem;
+  }
+
+  .navbar-collapse {
+    padding: 0.8rem 0.3rem 0.25rem;
+  }
+
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-section aside.card {
+    transform: none;
+  }
+
+  #projects .row > div {
+    grid-column: span 6 !important;
+  }
+
+  #about .reading-width {
+    grid-template-columns: 1fr;
+  }
+
+  #about .eyebrow,
+  #about h2,
+  #about .lead,
+  #about .lead + p,
+  #about .card.border-primary,
+  #about .card + p {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-block {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  #projects .row > div {
+    grid-column: 1 / -1 !important;
+  }
+
+  .project-card {
+    min-height: 0;
+  }
+
+  #skills .row > div {
+    margin: 0 0.75rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-section h1 {
+    font-size: clamp(3.6rem, 18vw, 5.4rem);
+    line-height: 0.86;
+  }
+
+  .hero-section::after,
+  .project-hero::after {
+    top: 7rem;
+    right: -8rem;
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .hero-section .fw-semibold.text-primary {
+    align-items: flex-start;
+    border-radius: 0.75rem;
+  }
+
+  .hero-section .fw-semibold.text-primary::before {
+    flex: 0 0 auto;
+    margin-top: 0.3rem;
+  }
+
+  .project-number {
+    font-size: 2.8rem;
+  }
+
+  .contact-panel {
+    min-height: auto;
+  }
+}
+
+@media print {
+  body::before {
+    display: none;
+  }
+
+  .cv-page > h1 {
+    color: #000;
+    background: none;
+  }
+}
+
+[data-bs-theme="dark"] {
+  --mz-ink: #eaf5ef;
+  --mz-muted: #a7bbb2;
+  --mz-paper: #0b1513;
+  --mz-panel: #101f1b;
+  --mz-green: #52d3a2;
+  --mz-green-deep: #7be4bb;
+  --mz-mint: #153f32;
+  --mz-amber: #f0b75c;
+  --mz-line: rgba(184, 242, 216, 0.16);
+  --portfolio-surface: rgba(82, 211, 162, 0.08);
+  --portfolio-border: var(--mz-line);
+  --bs-primary: var(--mz-green);
+  --bs-primary-rgb: 82, 211, 162;
+  --bs-link-color: #7be4bb;
+  --bs-link-hover-color: #b8f2d8;
+  --bs-body-bg: var(--mz-paper);
+  --bs-body-color: var(--mz-ink);
+  --bs-secondary-color: var(--mz-muted);
+}
+
+body {
+  overflow-x: hidden;
+  color: var(--mz-ink);
+  background-color: var(--mz-paper);
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.7;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--mz-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mz-line) 1px, transparent 1px);
+  background-size: 54px 54px;
+  opacity: 0.16;
+  content: "";
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+}
+
+h1,
+h2,
+h3,
+.navbar-brand {
+  color: var(--mz-ink);
+  font-family: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+p {
+  max-width: 72ch;
+}
+
+code,
+pre,
+.eyebrow,
+.project-number {
+  font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+}
+
+.reading-width {
+  max-width: 960px;
+}
+
+.site-header {
+  border-color: var(--mz-line) !important;
+  background: color-mix(in srgb, var(--mz-paper) 88%, transparent) !important;
+  backdrop-filter: blur(18px);
+}
+
+.navbar {
+  min-height: 76px;
+}
+
+.navbar-brand {
+  font-size: 1.15rem;
+  font-weight: 800 !important;
+}
+
+.brand-dot {
+  color: var(--mz-amber);
+}
+
+.nav-link {
+  position: relative;
+  color: var(--mz-muted);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.25rem;
+  left: 0.5rem;
+  height: 2px;
+  background: var(--mz-amber);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.hero-section,
+.project-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--mz-line);
+  background:
+    radial-gradient(circle at 88% 20%, color-mix(in srgb, var(--mz-green) 22%, transparent), transparent 27rem),
+    linear-gradient(135deg, color-mix(in srgb, var(--mz-panel) 80%, transparent), transparent 70%);
+}
+
+.hero-section::after,
+.project-hero::after {
+  position: absolute;
+  top: 12%;
+  right: 5%;
+  width: 13rem;
+  height: 13rem;
+  border: 1px solid var(--mz-line);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2rem color-mix(in srgb, var(--mz-green) 5%, transparent),
+    0 0 0 4rem color-mix(in srgb, var(--mz-green) 3%, transparent);
+  content: "";
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.hero-section .container,
+.project-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section h1 {
+  max-width: 12ch;
+  font-size: clamp(3.6rem, 8vw, 7rem);
+  line-height: 0.88;
+  letter-spacing: -0.07em;
+}
+
+.hero-section .fs-2 {
+  font-weight: 700;
+}
+
+.hero-section .fw-semibold.text-primary {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-left: 3px solid var(--mz-amber);
+  background: color-mix(in srgb, var(--mz-panel) 72%, transparent);
+  color: var(--mz-green-deep) !important;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.86rem;
+}
+
+.eyebrow {
+  color: var(--mz-green-deep);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.eyebrow::before {
+  margin-right: 0.55rem;
+  color: var(--mz-amber);
+  content: ">";
+}
+
+.section-block {
+  position: relative;
+  border-color: var(--mz-line);
+  background: color-mix(in srgb, var(--mz-paper) 94%, transparent);
+}
+
+.section-block:nth-of-type(even) {
+  background: color-mix(in srgb, var(--mz-panel) 68%, var(--mz-paper));
+}
+
+.card,
+.project-card,
+.metric-card,
+.contact-panel {
+  border: 1px solid var(--mz-line) !important;
+  border-radius: 0.5rem 1.5rem 0.5rem 1.5rem;
+  background: color-mix(in srgb, var(--mz-panel) 92%, transparent);
+  box-shadow: 0 16px 45px rgba(2, 25, 18, 0.07) !important;
+}
+
+.hero-section aside.card {
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--mz-green) !important;
+}
+
+.hero-section aside.card::after {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.6rem;
+  color: var(--mz-green);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 3.5rem;
+  content: "{ }";
+  opacity: 0.1;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.project-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(var(--mz-green), var(--mz-amber));
+  content: "";
+}
+
+.project-card:hover {
+  border-color: color-mix(in srgb, var(--mz-green) 65%, var(--mz-line)) !important;
+  box-shadow: 0 22px 55px rgba(2, 54, 40, 0.14) !important;
+  transform: translateY(-5px);
+}
+
+.project-number {
+  color: var(--mz-green);
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0.18;
+}
+
+.btn {
+  border-radius: 0.35rem 0.85rem 0.35rem 0.85rem;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  border-color: var(--mz-green-deep);
+  background: var(--mz-green-deep);
+  color: #fff;
+  box-shadow: 4px 4px 0 var(--mz-amber);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  border-color: var(--mz-ink);
+  background: var(--mz-ink);
+  color: var(--mz-panel);
+  box-shadow: 2px 2px 0 var(--mz-amber);
+  transform: translate(2px, 2px);
+}
+
+[data-bs-theme="dark"] .btn-primary {
+  color: #071411;
+}
+
+[data-bs-theme="dark"] .btn-primary:hover,
+[data-bs-theme="dark"] .btn-primary:focus {
+  color: #071411;
+  background: var(--mz-amber);
+}
+
+.btn-outline-secondary,
+.btn-outline-primary {
+  border-color: var(--mz-line);
+  color: var(--mz-ink);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-primary:hover {
+  border-color: var(--mz-green);
+  background: var(--mz-mint);
+  color: #073c2c;
+}
+
+.timeline li {
+  padding: 0 0 2.2rem 2.2rem;
+  border-left: 1px dashed var(--mz-green);
+}
+
+.timeline li::before {
+  top: 0.35rem;
+  left: -0.47rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 3px solid var(--mz-paper);
+  background: var(--mz-amber);
+  box-shadow: 0 0 0 1px var(--mz-amber);
+}
+
+.timeline strong {
+  font-size: 1.08rem;
+}
+
+.timeline span {
+  color: var(--mz-green-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.84rem;
+}
+
+.architecture-diagram {
+  border-color: var(--mz-line);
+  border-radius: 0.5rem 1.5rem 0.5rem 1.5rem;
+  background: #071713;
+  color: #b8f2d8;
+  box-shadow: inset 4px 0 0 var(--mz-amber);
+  line-height: 1.65;
+}
+
+.contact-panel {
+  position: relative;
+  overflow: hidden;
+  border-left: 6px solid var(--mz-amber) !important;
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--mz-green) 16%, transparent), transparent 65%),
+    var(--mz-panel);
+}
+
+.contact-panel::after {
+  position: absolute;
+  right: 2rem;
+  bottom: -1.25rem;
+  color: var(--mz-green);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 6rem;
+  content: "@";
+  opacity: 0.08;
+}
+
+.professional-links a {
+  position: relative;
+  z-index: 1;
+  color: var(--mz-green-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+}
+
+footer {
+  border-color: var(--mz-line) !important;
+  background: var(--mz-ink);
+  color: var(--mz-paper);
+}
+
+footer a {
+  color: var(--mz-mint);
+}
+
+a {
+  overflow-wrap: anywhere;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--mz-amber);
+  outline-offset: 4px;
+}
+
+/* Las capacidades se leen como tres áreas de trabajo, no como una lista genérica. */
+#skills .row > div {
+  position: relative;
+}
+
+#skills .row > div::before {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--mz-amber);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+#skills .row > div:nth-child(1)::before { content: "01 / construir"; }
+#skills .row > div:nth-child(2)::before { content: "02 / conectar"; }
+#skills .row > div:nth-child(3)::before { content: "03 / colaborar"; }
+
+#skills .row > div > h3,
+#skills .row > div > p {
+  padding-right: 1.5rem;
+}
+
+#skills .row > div:not(:last-child) {
+  border-right: 1px dashed var(--mz-line);
+}
+
+/* Destaca la formación actual como una pieza central del perfil. */
+#about .card.border-primary {
+  border: 1px solid color-mix(in srgb, var(--mz-green) 45%, var(--mz-line)) !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--mz-mint) 55%, transparent), transparent 70%),
+    var(--mz-panel);
+  box-shadow: 8px 8px 0 color-mix(in srgb, var(--mz-green) 16%, transparent) !important;
+}
+
+#about .card.border-primary .h4::after {
+  display: block;
+  width: 4rem;
+  height: 4px;
+  margin-top: 0.8rem;
+  background: var(--mz-amber);
+  content: "";
+}
+
+/* Páginas internas: el proyecto se presenta como una ficha técnica personal. */
+.project-hero {
+  min-height: 25rem;
+  display: grid;
+  align-items: center;
+}
+
+.project-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.project-hero .display-4 {
+  max-width: 15ch;
+  color: var(--mz-ink);
+}
+
+.project-hero a[href*="index.html"] {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--mz-line);
+  border-radius: 0.35rem 0.8rem 0.35rem 0.8rem;
+  background: var(--mz-panel);
+  color: var(--mz-green-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.project-hero a[href*="index.html"]:hover {
+  border-color: var(--mz-green);
+  transform: translateY(-2px);
+}
+
+main > .section-block .reading-width > h2 {
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+main > .section-block .reading-width > h2::before {
+  position: absolute;
+  top: 0.15em;
+  bottom: 0.1em;
+  left: 0;
+  width: 4px;
+  background: linear-gradient(var(--mz-green), var(--mz-amber));
+  content: "";
+}
+
+code {
+  padding: 0.16rem 0.38rem;
+  border: 1px solid var(--mz-line);
+  border-radius: 0.3rem;
+  background: color-mix(in srgb, var(--mz-mint) 65%, transparent);
+  color: var(--mz-green-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--mz-ink);
+  overflow: hidden;
+  border: 1px solid var(--mz-line);
+  border-radius: 0.4rem 1rem 0.4rem 1rem;
+}
+
+.table thead th {
+  border-bottom: 2px solid var(--mz-green);
+  background: var(--mz-ink);
+  color: var(--mz-mint);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.table td,
+.table th {
+  padding: 0.9rem 1rem;
+  border-color: var(--mz-line);
+}
+
+/* El CV conserva la misma firma visual y sigue siendo limpio al imprimir. */
+.cv-page {
+  max-width: 960px;
+}
+
+.cv-page > h1 {
+  max-width: 12ch;
+  margin-top: 1.5rem;
+  color: var(--mz-ink);
+  font-size: clamp(2.7rem, 7vw, 5.2rem);
+  line-height: 0.95;
+}
+
+.cv-page > .fs-4 {
+  color: var(--mz-green-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 1rem !important;
+  font-weight: 700;
+}
+
+.cv-page > section {
+  padding: 2rem 0;
+  border-top: 1px dashed var(--mz-line);
+}
+
+.cv-page > section > h2 {
+  margin-bottom: 1.25rem;
+  color: var(--mz-green-deep);
+}
+
+.cv-page > section > ul:not(.timeline) {
+  padding-left: 1.15rem;
+}
+
+.cv-page > section > ul:not(.timeline) li {
+  margin-bottom: 0.65rem;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: 1rem 0 0.75rem;
+  }
+
+  .nav-link::after {
+    right: auto;
+    width: 2rem;
+  }
+
+  .hero-section::after,
+  .project-hero::after {
+    right: -7rem;
+  }
+
+  #skills .row > div:not(:last-child) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .py-lg-6 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(3.2rem, 16vw, 4.7rem);
+  }
+
+  .card,
+  .project-card,
+  .contact-panel {
+    border-radius: 0.4rem 1.1rem 0.4rem 1.1rem;
+  }
+
+  .project-number {
+    font-size: 2rem;
+  }
+
+  #skills .row > div {
+    padding: 1.25rem;
+    border: 1px solid var(--mz-line);
+    border-radius: 0.4rem 1rem 0.4rem 1rem;
+    background: var(--mz-panel);
+  }
+
+  .project-hero {
+    min-height: 21rem;
+  }
+
+  .table {
+    font-size: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
+
+@media print {
+  .site-header,
+  footer,
+  .no-print,
+  .skip-link {
+    display: none !important;
+  }
+
+  .cv-page {
+    max-width: none;
+    padding: 0 !important;
+  }
+
+  .cv-page section {
+    break-inside: avoid;
+  }
+
+  body {
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .text-body-secondary,
+  .timeline span {
+    color: #333 !important;
+  }
+}
