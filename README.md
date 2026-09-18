@@ -39,3 +39,8 @@ Luego visitar `http://127.0.0.1:8080`.
 - La investigación de Mercado Libre corresponde al documento de entrega, todavía pendiente.
 
 No se incluyen datos de contacto ficticios ni capturas simuladas. El teléfono y el PDF original del CV no se publican en esta versión.
+
+## Railway: páginas independientes
+
+El comando npm start sirve los archivos HTML sin el modo SPA (-s). serve.json permite abrir /projects/modulo-8 y /projects/modulo-8.html como el mismo caso de estudio. Las rutas inexistentes deben devolver 404, nunca la portada. En Railway, usar el comando npm start y desplegar el último commit; quitar cualquier comando personalizado que aún use serve -s.
+
