@@ -1,0 +1,22 @@
+{
+  "name": "portafolio-michael-zamorano",
+  "version": "1.0.0",
+  "description": "Adaptación de la plantilla HTML, Bootstrap y JavaScript entregada por el profesor.",
+  "main": "index.js",
+    "scripts": {
+    "start": "serve -s . -l $PORT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael8922/portafolio.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/michael8922/portafolio/issues"
+  },
+  "homepage": "https://github.com/michael8922/portafolio#readme",
+  "dependencies": {
+    "serve": "^14.2.6"
+  }
+}
